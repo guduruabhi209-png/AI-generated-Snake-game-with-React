@@ -1,0 +1,6 @@
+{
+  "name": "Neon Pulse Snake",
+  "description": "A cyberpunk music-synced snake game featuring AI-generated ambient tracks.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}

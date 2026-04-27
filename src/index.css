@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'VT323', ui-sans-serif, system-ui;
+  --font-mono: 'Press Start 2P', ui-monospace, monospace;
+}
+
+@layer utilities {
+  .noise-bg {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.15;
+    mix-blend-mode: lighten;
+    pointer-events: none;
+  }
+  .animate-glitch {
+    animation: glitch 300ms infinite linear alternate-reverse;
+  }
+  .animate-tear {
+    animation: tear 2.5s infinite steps(10) alternate-reverse;
+  }
+}
+
+@keyframes glitch {
+  0% {
+    text-shadow: 4px 0 0 #00ffff, -4px 0 0 #ff00ff;
+    transform: translate(0);
+  }
+  20% {
+    text-shadow: -4px 0 0 #00ffff, 4px 0 0 #ff00ff;
+    transform: translate(-3px, 2px);
+  }
+  40% {
+    text-shadow: 4px 0 0 #00ffff, -4px 0 0 #ff00ff;
+    transform: translate(3px, -2px);
+  }
+  60% {
+    text-shadow: -4px 0 0 #00ffff, 4px 0 0 #ff00ff;
+    transform: translate(1px, 3px);
+  }
+  80% {
+    text-shadow: 4px 0 0 #00ffff, -4px 0 0 #ff00ff;
+    transform: translate(-2px, -3px);
+  }
+  100% {
+    text-shadow: -4px 0 0 #00ffff, 4px 0 0 #ff00ff;
+    transform: translate(2px, 1px);
+  }
+}
+
+@keyframes tear {
+  0% { clip-path: inset(10% 0 80% 0); transform: translate(-5px, 0); }
+  10% { clip-path: inset(80% 0 10% 0); transform: translate(5px, 0); }
+  20% { clip-path: inset(50% 0 30% 0); transform: translate(-5px, 0); }
+  30% { clip-path: inset(30% 0 50% 0); transform: translate(5px, 0); }
+  40% { clip-path: inset(90% 0 5% 0); transform: translate(5px, 0); }
+  50% { clip-path: inset(5% 0 90% 0); transform: translate(-5px, 0); }
+  60% { clip-path: inset(20% 0 70% 0); transform: translate(5px, 0); }
+  70% { clip-path: inset(70% 0 20% 0); transform: translate(-5px, 0); }
+  80% { clip-path: inset(40% 0 40% 0); transform: translate(5px, 0); }
+  90% { clip-path: inset(60% 0 30% 0); transform: translate(-5px, 0); }
+  100% { clip-path: inset(15% 0 85% 0); transform: translate(5px, 0); }
+}
+
+body {
+  background-color: #000;
+  color: #0ff;
+  margin: 0;
+  overflow: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #000;
+  border-left: 2px solid #ff00ff;
+}
+::-webkit-scrollbar-thumb {
+  background: #00ffff;
+}
